@@ -1,0 +1,11 @@
+@startuml AppOverviewUseCaseDiagram
+'-------------------------
+' Admin part
+'-------------------------
+
+:Main Admin: as Admin
+(Use Admin Part) as (Use_ADM)
+Admin -> (Login)
+Admin ---> (Use_ADM)
+
+@enduml

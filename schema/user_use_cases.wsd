@@ -1,0 +1,9 @@
+@startuml AppOverviewUseCaseDiagram
+'-------------------------
+' User part
+'-------------------------
+(Use the application) as (Use)
+User -> (Login)
+User --> (Use)
+
+@enduml
