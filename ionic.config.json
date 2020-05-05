@@ -1,0 +1,7 @@
+{
+  "name": "angular_firestore_template",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
