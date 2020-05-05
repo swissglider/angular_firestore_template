@@ -30,8 +30,8 @@ npm-debug.log*
 /plugins
 /www
 
-.firebaserc
-.firebase
-firestore.indexes.json
-serviceAccountKey.json
-firebase.json
+/.firebaserc
+/.firebase
+/firestore.indexes.json
+/serviceAccountKey.json
+/firebase.json
