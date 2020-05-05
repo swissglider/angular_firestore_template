@@ -3,7 +3,7 @@ const fs = require("fs");
 
 module.exports.loadTestData = (async (projectId, testDataArray, auth) => {
     await firebase.clearFirestoreData({ projectId });
-    const rules = fs.readFileSync("firestore_rules/config/firestore.rules", "utf8");
+    const rules = fs.readFileSync("firestore.rules", "utf8");
     await firebase.loadFirestoreRules({ projectId, rules });
     const app = await firebase.initializeAdminApp({ projectId });
     const db = app.firestore();

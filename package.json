@@ -9,9 +9,11 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "firestore-test": "mocha 'firestore_rules/**.test.js' --recursive",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "firestore-test": "mocha 'firestore_rules/**.test.js' --recursive",
+    "deploy": "sh ./scripts/deploy.sh",
+    "firestore_init_db": "node firestore_init_db/init.js",
     "compodoc": "npx compodoc -p tsconfig.app.json --output docs/compodoc --theme material --name 'Angular App Template with Firestore'"
   },
   "private": true,
@@ -28,6 +30,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
     "core-js": "^2.5.4",
+    "firebase-admin": "^8.11.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -47,6 +50,7 @@
     "@types/mocha": "^7.0.2",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "firebase-tools": "^8.2.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
