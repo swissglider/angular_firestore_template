@@ -6,10 +6,10 @@ This is Angular Template App with Firestore.
 There is a standard rule set for the firestore included. [Moor Info](https://github.com/swissglider/init-firestore-rules)
 
 ### User Use Cases
-![..](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/swissglider/init-firebase/master/schema/user_use_cases.wsd)
+![..](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/swissglider/angular_firestore_template/master/schema/user_use_cases.wsd)
 
 ### Admin Use Cases
-![..](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/swissglider/init-firebase/master/schema/adm_use_cases.wsd)
+![..](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/swissglider/angular_firestore_template/master/schema/adm_use_cases.wsd)
 
 ## Documentation
 Project Documentation: [Link](https://swissglider.github.io/angular_firestore_template/)  
