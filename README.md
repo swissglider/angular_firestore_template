@@ -68,6 +68,8 @@ Angular Documentation: [Link](https://swissglider.github.io/angular_firestore_te
    ``npm run firestore_test``
 - Generate the Compodoc Documentation:  
   ``npm run compodoc``
+- Build and deploy:  
+  ``npm run deploy``
 
 ## Test firestone rules
 1) Open Terminal 1 enter ``firebase emulators:start --only firestore``
