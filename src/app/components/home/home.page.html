@@ -1,0 +1,185 @@
+<ion-header>
+  <app-header [siteTitle]="title"></app-header>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-text-center">
+
+  <!-- not logged in -->
+  <ng-container *ngIf="!(authService.userRef$ | async)">
+    <strong>not logged in</strong>
+  </ng-container>
+
+  <ng-container *ngIf="(authService.userRef$ | async)">
+    <ng-container *ngIf="(authService.isUserBlacklisted$ | async) === true">
+      <strong>Blacklisted</strong>
+    </ng-container>
+  </ng-container>
+
+
+  <!-- ------------------------------------------------------------------------------------------------------------------------------------- -->
+  <!-- logged in -->
+  <ng-container *ngIf="(authService.userRef$ | async) as userRef">
+    <ng-container *ngIf="(authService.isUserBlacklisted$ | async) === false">
+      <!-- shown for all users that are logged in-->
+      <ng-container *ngIf="authService.user$ | async as user">
+
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-card class="ion-text-center">
+                <ion-card-header>
+                  <ion-title>logged in as {{userRef.displayName}}</ion-title>
+                </ion-card-header>
+                <ion-list>
+                  <ion-list-header>
+                    <ion-label>User Role</ion-label>
+                  </ion-list-header>
+
+                  <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+                    <ion-reorder>
+                      <ion-item>
+                        <ng-container *ngIf="user.roles.indexOf('admin') > -1">
+                          <ion-label>You are an admin</ion-label>
+                        </ng-container>
+                      </ion-item>
+                    </ion-reorder>
+
+                    <ion-list-header>
+                      <ion-label>All Roles</ion-label>
+                    </ion-list-header>
+
+                    <ion-reorder>
+                      <ion-item>
+                        <ng-container *ngIf="user.roles.indexOf('test') > -1">
+                          <ion-label>You are a test</ion-label>
+                        </ng-container>
+                      </ion-item>
+                    </ion-reorder>
+
+                    <ion-item>
+                      <ion-reorder slot="start"></ion-reorder>
+                      <ion-label>Hallo</ion-label>
+                    </ion-item>
+
+                  </ion-reorder-group>
+                </ion-list>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-card class="ion-text-center">
+                <ion-list>
+                  <ion-list-header>
+                    <ion-title>Roles:</ion-title>
+                  </ion-list-header>
+                  <ion-item *ngFor="let role of user.roles">
+                    <ion-label>{{role}}</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col class="ion-no-padding">
+              <ion-card class="ion-text-center">
+                <ion-list>
+                  <ion-list-header>
+                    <ion-title>Groups:</ion-title>
+                  </ion-list-header>
+                  <ion-item *ngFor="let group of user.groups">
+                    <ion-label>{{group}}</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <!-- shown for all users that has at leas one role -->
+        <ng-container *ngIf="user.roles.length > 0">
+
+          <!-- shown for admin users -->
+          <ng-container
+            *ngIf="user.roles.indexOf('admin') > -1 || user.roles.indexOf('authWriter') > -1 || user.roles.indexOf('authRead') > -1">
+
+            <ion-grid>
+              <ion-row>
+                <ion-col class="ion-no-padding">
+                  <ion-card class="ion-text-center">
+
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col class="ion-no-padding">
+                  <ion-card class="ion-text-center">
+                    <ion-list>
+                      <ion-list-header>
+                        <ion-title>Users:</ion-title>
+                      </ion-list-header>
+                      <ng-container *ngIf="authService.adm_allUsers$ | async as allUsers">
+                        <ion-item *ngFor="let userF of allUsers">
+                          <ion-label><span *ngIf="!userService.getProfile(userF.id)">{{userF.id}}</span><span
+                              *ngIf="userService.getProfile(userF.id)">{{userService.getProfile(userF.id).displayName}}</span>
+                          </ion-label>
+                        </ion-item>
+                      </ng-container>
+                    </ion-list>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col class="ion-no-padding">
+                  <ion-card class="ion-text-center">
+                    <ion-list>
+                      <ion-list-header>
+                        <ion-title>All Rules:</ion-title>
+                      </ion-list-header>
+                      <ng-container *ngIf="authService.adm_allAuthRoles$ | async as allRoles">
+                        <ion-item *ngFor="let roleF of allRoles">
+                          <ion-label>{{roleF}}</ion-label>
+                        </ion-item>
+                      </ng-container>
+                    </ion-list>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col class="ion-no-padding">
+                  <ion-card class="ion-text-center">
+                    <ion-list>
+                      <ion-list-header>
+                        <ion-title>All Groups:</ion-title>
+                      </ion-list-header>
+                      <ng-container *ngIf="authService.adm_allAuthGroups$ | async as allGroups">
+                        <ion-item *ngFor="let groupF of allGroups">
+                          <ion-label>{{groupF}}</ion-label>
+                        </ion-item>
+                      </ng-container>
+                    </ion-list>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,27 @@
+ion-content {
+  --background: #a4a4a4;
+}
+
+ion-card {
+  // display: flex;
+  // flex-direction: column;
+  max-width: 400px !important;
+  min-width: 280px !important;
+  padding: 0px;
+  margin: 8px;
+}
+
+ion-list-header {
+  --background: #d32f2f;
+  --color: #ffffff;
+}
+
+ion-list {
+  padding: 5px;
+  background: #d32f2f;
+}
+
+ion-fab-button {
+  --background: #f44336;
+  --color: #ffffff;
+}

@@ -1,0 +1,61 @@
+.parent {
+    background-color: #494949;
+    border-radius: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.parent .title {
+    color: white;
+    margin-top: 1rem;
+}
+
+.container {
+    background-color: #494949;
+}
+
+.item {
+    margin: 10px;
+    --border-radius: 15px;
+}
+
+.selected {
+    --background: #f44336;
+    --color: #494949;
+}
+
+.all {
+    --color: #9a0007;
+}
+
+.empty_item {
+    --background: #a4a4a4;
+    --color: #9a0007;
+    --border-width: 2px;
+    --border-style: dashed;
+    --border-color: #9a0007;
+    --border-radius: 15px;
+    --inner-padding-top: 5px;
+    --inner-padding-bottom: 5px;
+    --inner-padding-start: 5px;
+    --inner-padding-end: 5px;
+    --text-align: left;
+}
+
+.selectuser {
+    --background: #d32f2f;
+    --color: white;
+}
+
+.hallo {
+    background: blue;
+    background-color: blue;
+    --background: blue;
+    --background-color: blue;
+}
+
+ion-checkbox {
+    --color: white;
+    --background-checked: #9a0007;
+    --border-color-checked: #9a0007;
+}

@@ -1,0 +1,30 @@
+<!-- Top navigation -->
+<ion-toolbar>
+  <!-- Not logged in -->
+  <ng-container *ngIf="!(authService.userRef$ | async)">
+    <ion-icon class="ion-padding-start logo-ion-icon" slot="start" name="link-sharp"></ion-icon>
+    <ion-label slot="start">Login</ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="authService.loginWithGoogle()">login</ion-button>
+    </ion-buttons>
+  </ng-container>
+  <!-- logged in -->
+  <ng-container *ngIf="authService.userRef$ | async as userRef">
+    <ion-icon class="ion-padding-start  logo-ion-icon" slot="start" name="link-sharp"></ion-icon>
+    <ion-label slot="start">{{appTitle}} - {{siteTitle}}</ion-label>
+    <ion-title slot="start">
+      {{appTitle}} - {{siteTitle}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-avatar slot="end">
+        <img src="{{(userRef.photoURL) ? userRef.photoURL : '/assets/dummy-user.png'}}" alt="{{userRef.displayName}}">
+      </ion-avatar>
+      <ion-button class="iconbutton" (click)="authService.logout()">logout</ion-button>
+      <ng-container *ngIf="authService.user$ | async as user">
+        <ion-button *ngIf="user.roles.length > 0" (click)="openADM()">
+          <ion-icon class="iconbutton" name="settings-outline"></ion-icon>
+        </ion-button>
+      </ng-container>
+    </ion-buttons>
+  </ng-container>
+</ion-toolbar>

@@ -62,6 +62,8 @@ Angular Documentation: [Link](https://swissglider.github.io/angular_firestore_te
 - Compodoc to document the Anular app (docs/compodoc)
 - PlantUML (schema)
 - Scripts (scripts)
+- pwa
+- Google Authentication (only)
 
 ## Scripts
 - Test the Firestore Rules:  
