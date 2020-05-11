@@ -10,11 +10,22 @@
     margin-top: 1rem;
 }
 
+.row_container{
+    padding-top: 2rem
+}
+
 .container {
     background-color: #494949;
 }
 
-.item {
+.own_item {
+    margin-top: 10px;
+    --border-radius: 15px;
+    --background: #d32f2f;
+    --color: white;
+}
+
+.contained_item {
     margin: 10px;
     --border-radius: 15px;
 }
@@ -42,20 +53,27 @@
     --text-align: left;
 }
 
-.selectuser {
-    --background: #d32f2f;
-    --color: white;
-}
-
-.hallo {
-    background: blue;
-    background-color: blue;
-    --background: blue;
-    --background-color: blue;
-}
-
 ion-checkbox {
     --color: white;
     --background-checked: #9a0007;
     --border-color-checked: #9a0007;
+}
+
+.addButton {
+    --color: white;
+    --border-color: #9a0007;
+    --background: #9a0007;
+}
+
+.textInputContainer {
+    background: white;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-left: 15px;
+}
+
+.textInput {
+    --color: #9a0007;
 }

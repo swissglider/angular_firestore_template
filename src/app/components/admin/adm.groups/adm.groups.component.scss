@@ -1,0 +1,86 @@
+.parent {
+    background-color: #494949;
+    border-radius: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.parent .title {
+    color: white;
+    margin-top: 1rem;
+}
+
+.row_container{
+    padding-top: 1rem;
+}
+
+.remove_container{
+    background:#494949;
+    border-radius: 15px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.container {
+    background-color: #494949;
+}
+
+.own_item {
+    margin-top: 10px;
+    --border-radius: 15px;
+    --background: #d32f2f;
+    --color: white;
+}
+
+.contained_item {
+    margin: 10px;
+    --border-radius: 15px;
+}
+
+.selected {
+    --background: #f44336;
+    --color: #494949;
+}
+
+.all {
+    --color: #9a0007;
+}
+
+.empty_item {
+    --background: #a4a4a4;
+    --color: #9a0007;
+    --border-width: 2px;
+    --border-style: dashed;
+    --border-color: #9a0007;
+    --border-radius: 15px;
+    --inner-padding-top: 5px;
+    --inner-padding-bottom: 5px;
+    --inner-padding-start: 5px;
+    --inner-padding-end: 5px;
+    --text-align: left;
+}
+
+ion-checkbox {
+    --color: white;
+    --background-checked: #9a0007;
+    --border-color-checked: #9a0007;
+}
+
+.addButton {
+    --color: white;
+    --border-color: #9a0007;
+    --background: #9a0007;
+}
+
+.textInputContainer {
+    background: white;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding-left: 15px;
+}
+
+.textInput {
+    --color: #9a0007;
+}

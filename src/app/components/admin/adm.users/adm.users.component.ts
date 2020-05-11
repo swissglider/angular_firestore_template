@@ -1,8 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { DragulaService } from 'ng2-dragula';
-import { ToastController } from '@ionic/angular';
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/firebase.auth/auth.service';
 import { UserService } from 'src/app/services/firebase.user/user.service';
 import { User } from 'src/app/models/core/user/user';
@@ -29,7 +27,6 @@ export class Adm_UsersComponent implements OnInit, OnDestroy {
     public router: Router,
     private ref: ChangeDetectorRef,
     private dragulaService: DragulaService,
-    private toastController: ToastController,
     public authService: AuthService,
     public userService: UserService,
   ) {}
@@ -42,11 +39,11 @@ export class Adm_UsersComponent implements OnInit, OnDestroy {
       this.dropObs.unsubscribe();
     }
 
-    this.dragulaService.destroy('bag');
+    this.dragulaService.destroy('user_bag');
   }
 
   ngOnInit(): void {
-    this.dropObs = this.dragulaService.dropModel('bag')
+    this.dropObs = this.dragulaService.dropModel('user_bag')
       .subscribe(({ el, target, source, item, sourceModel, targetModel, sourceIndex, targetIndex }) => {
         if(el.classList.contains("empty_item")){
           return false;
@@ -61,7 +58,7 @@ export class Adm_UsersComponent implements OnInit, OnDestroy {
         this.userService.setUser(this.selectedUser);
       });
  
-      this.dragulaService.createGroup('bag', {
+      this.dragulaService.createGroup('user_bag', {
         moves: (el, container, handle, sibling) => {
           if(el.classList.contains("empty_item")){
             return false;
@@ -69,7 +66,6 @@ export class Adm_UsersComponent implements OnInit, OnDestroy {
           return true;
         }
       });
-
   }
 
   userChanged(ev){

@@ -3,7 +3,7 @@
   <ion-row class="align-items-center no-padding">
 
     <ion-col size="12" class="no-padding">
-      <ion-item class="selectuser parent" lines="none">
+      <ion-item class="own_item" lines="none">
         <ion-label>Select User:</ion-label>
         <ion-select [(ngModel)]="selectedUser" (ionChange)="userChanged($event)">
           <ng-container *ngIf="authService.adm_allUsers$ | async as allUsers">
@@ -12,7 +12,7 @@
           </ng-container>
         </ion-select>
       </ion-item>
-      <ion-item class="selectuser parent" lines="none" *ngIf="selectedUser">
+      <ion-item class="own_item" lines="none" *ngIf="selectedUser">
         <ion-label>On the Blacklist:</ion-label>
         <ion-checkbox [checked]="(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)" (ionChange)="blacklistChanged($event)"></ion-checkbox>
       </ion-item>
@@ -20,18 +20,18 @@
 
   </ion-row>
 
-  <ion-row class="no-padding" *ngIf="selectedUser && !(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)">
+  <ion-row class="no-padding row_container" *ngIf="selectedUser && !(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)">
 
     <ion-col size="6" class="no-padding">
       <ion-card class="ion-text-center parent">
         <ion-list-header>
           <h4 class="title">Selected Roles</h4>
         </ion-list-header>
-        <ion-list id="selectedRoles" class="container" dragula="bag" [(dragulaModel)]="selectedRoles" lines="none">
-          <ion-item *ngFor="let item of selectedRoles" class="item selected" expand="block" text-wrap lines="none">
+        <ion-list id="selectedRoles" class="container" dragula="user_bag" [(dragulaModel)]="selectedRoles" lines="none">
+          <ion-item *ngFor="let item of selectedRoles" class="contained_item selected" expand="block" text-wrap lines="none">
             {{ item }}
           </ion-item>
-          <ion-item expand="block" text-wrap class="empty_item" lines="none">drag me here</ion-item>
+          <ion-item expand="block" text-wrap class="contained_item empty_item" lines="none">drag me here</ion-item>
         </ion-list>
       </ion-card>
     </ion-col>
@@ -41,11 +41,11 @@
         <ion-list-header>
           <h4 class="title">All Roles</h4>
         </ion-list-header>
-        <ion-list id="allRoles" class="container" dragula="bag" [(dragulaModel)]="allRoles" lines="none">
-          <ion-item class="item" *ngFor="let item of allRoles" class="item all" expand="block" text-wrap lines="none">
+        <ion-list id="allRoles" class="container" dragula="user_bag" [(dragulaModel)]="allRoles" lines="none">
+          <ion-item class="item" *ngFor="let item of allRoles" class="contained_item all" expand="block" text-wrap lines="none">
             {{ item }}
           </ion-item>
-          <ion-item expand="block" text-wrap class="empty_item" lines="none">drag me here</ion-item>
+          <ion-item expand="block" text-wrap class="contained_item empty_item" lines="none">drag me here</ion-item>
         </ion-list>
       </ion-card>
     </ion-col>

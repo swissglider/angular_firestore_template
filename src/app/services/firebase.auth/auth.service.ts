@@ -25,6 +25,7 @@ export class AuthService {
   private userSubs: any;
   private allUsersSubs: any;
   private balcklistSub: any;
+  private allAuthGroups: any;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -40,6 +41,7 @@ export class AuthService {
         if (this.userSubs) { this.userSubs.unsubscribe(); }
         if (this.balcklistSub) { this.balcklistSub.unsubscribe(); }
         if (this.allUsersSubs) { this.allUsersSubs.unsubscribe(); }
+        if (this.allAuthGroups) { this.allAuthGroups.unsubscribe(); }
         this.userService.closeAllProfiles();
       }
       if (userAutState) {
@@ -88,6 +90,24 @@ export class AuthService {
         return data.groups;
       })
     );
+  }
+
+  addAuthGroup(groupName){
+    if (this.allAuthGroups) { this.allAuthGroups.unsubscribe(); }
+    this.allAuthGroups = this.adm_allAuthGroups$.subscribe(groups => {
+      if(!groups.includes(groupName)){
+        groups.push(groupName);
+        this.firestore.collection('authGroup').doc('theAuthGroup').set({groups:groups});
+      }
+    })
+  }
+
+  deleteAuthGroup(groupName){
+    if (this.allAuthGroups) { this.allAuthGroups.unsubscribe(); }
+    this.allAuthGroups = this.adm_allAuthGroups$.subscribe(groups => {
+      groups = groups.filter(e => e !== groupName);
+      this.firestore.collection('authGroup').doc('theAuthGroup').set({groups:groups});
+    })
   }
 
   private getBlacklist() {
@@ -158,6 +178,7 @@ export class AuthService {
     if (this.userSubs) { this.userSubs.unsubscribe(); }
     if (this.balcklistSub) { this.balcklistSub.unsubscribe(); }
     if (this.allUsersSubs) { this.allUsersSubs.unsubscribe(); }
+    if (this.allAuthGroups) { this.allAuthGroups.unsubscribe(); }
     this.userService.closeAllProfiles();
     this.afAuth.signOut();
     this.router.navigate(['home']);
