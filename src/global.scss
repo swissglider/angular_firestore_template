@@ -59,3 +59,16 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
 }
+
+/**
+ * own
+**/
+.vertical-line {
+  background-color: #9a0007;
+  padding:0;
+  margin-left:0px;
+  margin-right:0px;
+  max-height: 1px;
+  min-height: 1px;
+  height: 1px;
+}

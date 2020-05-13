@@ -1,0 +1,26 @@
+<ion-grid>
+  <ng-container>
+    <ion-row class="no-padding">
+
+
+      <ion-col size="6" class="no-padding" style="padding-top:1rem;">
+        <ion-list id="blacklistedUsers" [(dragulaModel)]="blacklistedUsers" class="container_bl"
+          dragula="blacklisted_bag" lines="none">
+          Blacklisted Users:
+          <ion-item *ngFor="let user of blacklistedUsers" class="contained_item all" lines="none">
+            {{userService.getProfile(user.id).displayName}}
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size="6" class="no-padding" style="padding-top:1rem;">
+        <ion-list id="notBlacklistedUsers" [(dragulaModel)]="notBlacklistedUsers" class="container"
+          dragula="blacklisted_bag" lines="none">
+          Not Blacklisted Users:
+          <ion-item *ngFor="let user of notBlacklistedUsers" class="contained_item selected" lines="none">
+            {{userService.getProfile(user.id).displayName}}
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ng-container>
+</ion-grid>

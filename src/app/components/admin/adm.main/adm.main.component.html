@@ -1,4 +1,36 @@
-<ion-toolbar>
-    
-</ion-toolbar>
-<ion-label>Hallo Admin Main</ion-label>
+<ion-list>
+    <ng-container *ngIf="authService.adm_allUsers$ | async as allUsers">
+        <ion-item class="own_item" lines="none">
+            <ion-label slot="start">Total Users:</ion-label>
+            <ion-badge slot="start" (click)="presentPopover($event, 'All Users', 'adm-users', getAllUsersDisplayName(allUsers))">{{allUsers.length}}</ion-badge>
+            <ion-buttons slot="end">
+                <ion-button fill="outline" (click)="changeSegment('adm-users', null)">Set Roles</ion-button>
+            </ion-buttons>
+        </ion-item>
+    </ng-container>
+
+    <ng-container *ngIf="authService.adm_allAuthGroups$ | async as allGroups">
+        <ion-item class="own_item" lines="none">
+            <ion-label slot="start">Total Groups:</ion-label>
+            <ion-badge slot="start" (click)="presentPopover($event, 'All Groups', 'adm-groups', getAllGroups(allGroups))">{{allGroups.length}}</ion-badge>
+            <ion-buttons slot="end">
+                <ion-button fill="outline" (click)="changeSegment('adm-groups', null)">Set Groups</ion-button>
+            </ion-buttons>
+        </ion-item>
+    </ng-container>
+
+    <ng-container *ngIf="authService.adm_Blacklist$ | async as blacklist">
+        <ion-item class="own_item" lines="none">
+            <ion-label slot="start">Total User Blacklisted:</ion-label>
+            <ion-badge slot="start" (click)="presentPopover($event, 'Blacklisted Users', 'adm-users', getBlacklistedUsers(blacklist))">{{blacklist.length}}</ion-badge>
+            <ion-buttons slot="end">
+                <ion-button fill="outline" (click)="changeSegment('adm-blacklist', null)">Blacklist</ion-button>
+            </ion-buttons>
+        </ion-item>
+    </ng-container>
+
+    <ion-item class="own_item" lines="none">
+        <ion-label slot="start">Total Posts:</ion-label>
+        <ion-badge slot="start">0</ion-badge>
+    </ion-item>
+</ion-list>

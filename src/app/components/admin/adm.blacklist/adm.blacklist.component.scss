@@ -29,6 +29,21 @@
     padding-bottom: 5px;
 }
 
+.container_bl{
+    background:black;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    color: #d32f2f;
+    border-width: 2px;
+    border-style: dashed;
+    border-color: #d32f2f;
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .own_item {
     margin-top: 10px;
     --border-radius: 15px;
@@ -37,7 +52,10 @@
 }
 
 .contained_item {
-    margin: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     --border-radius: 15px;
 }
 
@@ -68,6 +86,19 @@
 
 .textInput {
     --color: #9a0007;
+}
+
+
+ion-toggle {
+    --background-checked: #a4a4a4;
+    --handle-background-checked: #9a0007;
+
+    --background: #a4a4a4;
+    --handle-background: white;
+}
+
+ion-segment {
+    --background: #d32f2f;
 }
 
 .delete_btn {

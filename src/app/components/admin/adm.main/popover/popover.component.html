@@ -1,0 +1,6 @@
+<ion-toolbar class="ion-text-center">
+  <ion-label class="ion-text-center">{{title}}</ion-label>
+</ion-toolbar>
+<ion-list *ngFor="let transferModel of transferModels">
+  <ion-item (click)="onClick(transferModel)">{{transferModel.display}}</ion-item>
+</ion-list>

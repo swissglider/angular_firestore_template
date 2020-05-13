@@ -24,6 +24,8 @@ import { Adm_GroupsComponent } from './components/admin/adm.groups/adm.groups.co
 import { Adm_UsersComponent } from './components/admin/adm.users/adm.users.component';
 import { Adm_MainComponent } from './components/admin/adm.main/adm.main.component';
 import { Adm_HomeComponent } from './components/admin/core/adm.home/adm.home.component';
+import { PopoverComponent } from './components/admin/adm.main/popover/popover.component';
+import { Adm_BlacklistComponent } from './components/admin/adm.blacklist/adm.blacklist.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +36,12 @@ import { Adm_HomeComponent } from './components/admin/core/adm.home/adm.home.com
     Adm_GroupsComponent,
     Adm_MainComponent,
     Adm_HomeComponent,
+    Adm_BlacklistComponent,
+    PopoverComponent,
   ],
-  entryComponents: [],
+  entryComponents: [
+    PopoverComponent,
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

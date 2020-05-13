@@ -1,11 +1,19 @@
 <ion-grid>
-
   <ion-row class="align-items-center no-padding">
 
     <ion-col size="12" class="no-padding">
+      <ion-item class="transparent_item" lines="none" *ngIf="selectedUser">
+        <ion-avatar slot="start">
+          <img
+            src="{{(userService.getProfile(selectedUser.id).photoURL) ? userService.getProfile(selectedUser.id).photoURL : '/assets/dummy-user.png'}}"
+            alt="{{userService.getProfile(selectedUser.id).displayName}}">
+        </ion-avatar>
+        <ion-label>{{userService.getProfile(selectedUser.id).displayName}}</ion-label>
+      </ion-item>
       <ion-item class="own_item" lines="none">
         <ion-label>Select User:</ion-label>
-        <ion-select [(ngModel)]="selectedUser" (ionChange)="userChanged($event)">
+        <ion-select id="userSelect" [(ngModel)]="selectedUser" (ionChange)="userChanged($event)"
+          [compareWith]="compareById">
           <ng-container *ngIf="authService.adm_allUsers$ | async as allUsers">
             <ion-select-option *ngFor="let userF of allUsers" [value]="userF">
               {{userService.getProfile(userF.id).displayName}}</ion-select-option>
@@ -13,42 +21,75 @@
         </ion-select>
       </ion-item>
       <ion-item class="own_item" lines="none" *ngIf="selectedUser">
-        <ion-label>On the Blacklist:</ion-label>
-        <ion-checkbox [checked]="(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)" (ionChange)="blacklistChanged($event)"></ion-checkbox>
+        <ion-label>Blacklisted:</ion-label>
+        <ion-toggle [checked]="(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)"
+          (ionChange)="blacklistChanged($event)"></ion-toggle>
       </ion-item>
     </ion-col>
 
   </ion-row>
 
-  <ion-row class="no-padding row_container" *ngIf="selectedUser && !(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)">
+  <ng-container *ngIf="selectedUser && !(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)">
+    <ion-segment [value]="segmentModel" style="margin-top:1rem;" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="roles">
+        <ion-label>Roles</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="groups">
+        <ion-label>Groups</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
-    <ion-col size="6" class="no-padding">
-      <ion-card class="ion-text-center parent">
-        <ion-list-header>
-          <h4 class="title">Selected Roles</h4>
-        </ion-list-header>
-        <ion-list id="selectedRoles" class="container" dragula="user_bag" [(dragulaModel)]="selectedRoles" lines="none">
-          <ion-item *ngFor="let item of selectedRoles" class="contained_item selected" expand="block" text-wrap lines="none">
-            {{ item }}
-          </ion-item>
-          <ion-item expand="block" text-wrap class="contained_item empty_item" lines="none">drag me here</ion-item>
-        </ion-list>
-      </ion-card>
-    </ion-col>
+    <ng-container *ngIf="segmentModel === 'roles'">
+      <ion-row class="no-padding">
 
-    <ion-col size="6" class="no-padding">
-      <ion-card class="ion-text-center parent">
-        <ion-list-header>
-          <h4 class="title">All Roles</h4>
-        </ion-list-header>
-        <ion-list id="allRoles" class="container" dragula="user_bag" [(dragulaModel)]="allRoles" lines="none">
-          <ion-item class="item" *ngFor="let item of allRoles" class="contained_item all" expand="block" text-wrap lines="none">
-            {{ item }}
-          </ion-item>
-          <ion-item expand="block" text-wrap class="contained_item empty_item" lines="none">drag me here</ion-item>
-        </ion-list>
-      </ion-card>
-    </ion-col>
+        <ion-col size="6" class="no-padding" style="padding-top:1rem;">
+          <ion-list id="selectedRoles" [(dragulaModel)]="selectedRoles" class="container" dragula="user_bag"
+            lines="none">
+            Selected Roles
+            <ion-item *ngFor="let item of selectedRoles" class="contained_item selected" lines="none">
+              {{ item }}
+            </ion-item>
+          </ion-list>
+        </ion-col>
 
-  </ion-row>
+        <ion-col size="6" class="no-padding" style="padding-top:1rem;">
+          <ion-list id="allRoles" [(dragulaModel)]="allRoles" class="container" dragula="user_bag" lines="none">
+            All Roles
+            <ion-item *ngFor="let item of allRoles" class="contained_item all" lines="none">
+              {{ item }}
+            </ion-item>
+          </ion-list>
+        </ion-col>
+
+      </ion-row>
+    </ng-container>
+
+    <ng-container *ngIf="segmentModel === 'groups'">
+      <ion-row class="no-padding"
+        *ngIf="selectedUser && !(authService.adm_Blacklist$ | async)?.includes(selectedUser.id)">
+        <ion-col size="6" class="no-padding" style="padding-top:1rem;">
+          <ion-list id="selectedGroups" [(dragulaModel)]="selectedGroups" class="container" dragula="groups_bag">
+            User Owned Groups
+            <ion-item *ngFor="let item of selectedGroups" class="contained_item selected" expand="block" text-wrap
+              lines="none">
+              {{ item }}
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col size="6" class="no-padding" style="padding-top:1rem;">
+          <ion-list id="allGroups" [(dragulaModel)]="allGroups" class="container" dragula="groups_bag">
+            Not user Owned Groups
+            <ion-item *ngFor="let item of allGroups" class="contained_item all" style="--padding-end:0" expand="block"
+              text-wrap lines="none">
+              {{ item }}
+              <ion-button class="ion-no-padding ion-no-margin delete_btn" fill="none" slot="end"
+                (click)="authService.deleteAuthGroup(item)">
+                <ion-icon style="font-size:12px;" name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+  </ng-container>
 </ion-grid>

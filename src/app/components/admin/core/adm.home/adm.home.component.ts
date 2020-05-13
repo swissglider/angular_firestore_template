@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { DragulaService } from 'ng2-dragula';
-import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/firebase.auth/auth.service';
+import { TransferModel } from '../../adm.main/transfer.model';
 
 @Component({
   selector: 'adm-home',
@@ -13,7 +12,8 @@ import { AuthService } from 'src/app/services/firebase.auth/auth.service';
 export class Adm_HomeComponent implements OnInit {
 
   title: string = 'Admin';
-  segmentModel: string = 'adm-main'
+  @Input() segmentModel: string = 'adm-main';
+  @Input() transferModel: TransferModel = null;
 
   constructor(
     public router: Router,
@@ -21,20 +21,30 @@ export class Adm_HomeComponent implements OnInit {
     public authService: AuthService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ionViewWillEnter() {}
 
   ionViewDidEnter() {}
 
   segmentChanged(event){
-    this.segmentModel = event.detail.value
+    this.segmentModel = event.detail.value;
     this.ref.markForCheck();
   }
 
-  // segmentChanged(ev: any) {
-  //   this.router.navigate([ev.detail.value]);
-  //   this.ref.markForCheck();
-  // }
+  changeTitleEvent(title: string){
+    if(title){
+      this.title = title;
+      this.ref.markForCheck();
+    }
+  }
+
+  changeSegmentEvent(segment: {segmentModel:string, transferModel: TransferModel}){
+    if(segment){
+      this.segmentModel = segment.segmentModel;
+      this.transferModel = segment.transferModel;
+      this.ref.markForCheck();
+    }
+  }
 
 }

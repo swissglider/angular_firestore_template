@@ -1,21 +1,39 @@
-.parent {
-    background-color: #494949;
+.remove_container{
+    background:#a4a4a4;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    max-height: 100px;
+    color: #9a0007;
+    border-width: 2px;
+    border-style: dashed;
+    border-color: #9a0007;
     border-radius: 15px;
-    padding: 0;
-    margin: 0;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-.parent .title {
-    color: white;
-    margin-top: 1rem;
+.container{
+    background:#a4a4a4;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    color: #9a0007;
+    border-width: 2px;
+    border-style: dashed;
+    border-color: #9a0007;
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
-.row_container{
-    padding-top: 2rem
-}
-
-.container {
-    background-color: #494949;
+.transparent_item {
+    margin-top: 10px;
+    --border-radius: 15px;
+    --background: transparent;
+    --color: #9a0007;
 }
 
 .own_item {
@@ -26,37 +44,21 @@
 }
 
 .contained_item {
-    margin: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     --border-radius: 15px;
 }
 
 .selected {
-    --background: #f44336;
-    --color: #494949;
+    --background: #9a0007;
+    --color: white;
 }
 
 .all {
-    --color: #9a0007;
-}
-
-.empty_item {
-    --background: #a4a4a4;
-    --color: #9a0007;
-    --border-width: 2px;
-    --border-style: dashed;
-    --border-color: #9a0007;
-    --border-radius: 15px;
-    --inner-padding-top: 5px;
-    --inner-padding-bottom: 5px;
-    --inner-padding-start: 5px;
-    --inner-padding-end: 5px;
-    --text-align: left;
-}
-
-ion-checkbox {
+    --background: #494949;
     --color: white;
-    --background-checked: #9a0007;
-    --border-color-checked: #9a0007;
 }
 
 .addButton {
@@ -76,4 +78,22 @@ ion-checkbox {
 
 .textInput {
     --color: #9a0007;
+}
+
+
+ion-toggle {
+    --background-checked: #a4a4a4;
+    --handle-background-checked: #9a0007;
+
+    --background: #a4a4a4;
+    --handle-background: white;
+}
+
+ion-segment {
+    --background: #d32f2f;
+}
+
+.delete_btn {
+    // --color: white;
+    --color: #d32f2f;
 }

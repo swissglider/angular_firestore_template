@@ -1,4 +1,20 @@
-ion-toolbar {
-    // --background: #d32f2f;
-    --background: black;
+.own_item {
+    margin: 10px;
+    --border-radius: 15px;
+    --background: #d32f2f;
+    --color: white;
+}
+
+ion-list {
+    background:#a4a4a4;
+}
+
+ion-button {
+    --color: white;
+    --border-color: #9a0007;
+}
+
+ion-badge {
+    --background: #494949;
+    --color: #d24330;
 }

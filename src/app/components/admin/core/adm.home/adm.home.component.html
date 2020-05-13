@@ -10,19 +10,19 @@
     <ng-container *ngIf="user.roles.length > 0">
 
       <ng-container *ngIf="segmentModel === 'adm-main'">
-        <adm-main></adm-main>
+        <adm-main [transferModel]="transferModel" (titleEvent)="changeTitleEvent($event)" (segmentEvent)="changeSegmentEvent($event)"></adm-main>
       </ng-container>
       <!-- shown for admin users -->
       <ng-container
         *ngIf="user.roles.indexOf('admin') > -1 || user.roles.indexOf('authWriter') > -1 || user.roles.indexOf('authRead') > -1">
-
-        
-        
         <ng-container *ngIf="segmentModel === 'adm-users'">
-          <adm-users></adm-users>
+          <adm-users [transferModel]="transferModel" (titleEvent)="changeTitleEvent($event)" (segmentEvent)="changeSegmentEvent($event)"></adm-users>
         </ng-container>
         <ng-container *ngIf="segmentModel === 'adm-groups'">
-          <adm-groups></adm-groups>
+          <adm-groups [transferModel]="transferModel" (titleEvent)="changeTitleEvent($event)" (segmentEvent)="changeSegmentEvent($event)"></adm-groups>
+        </ng-container>
+        <ng-container *ngIf="segmentModel === 'adm-blacklist'">
+          <adm-blacklist [transferModel]="transferModel" (titleEvent)="changeTitleEvent($event)" (segmentEvent)="changeSegmentEvent($event)"></adm-blacklist>
         </ng-container>
 
       </ng-container>
@@ -40,7 +40,7 @@
         <ion-button class="buttons" [routerLink]="['/home']">
           <ion-icon name="home-outline"></ion-icon>
         </ion-button>
-        <ion-segment value="adm-main" scrollable="true" (ionChange)="segmentChanged($event)">
+        <ion-segment [value]="segmentModel" scrollable="true" (ionChange)="segmentChanged($event)">
 
           <ion-segment-button class="buttons" value="adm-main">
             <ion-icon name="settings-outline"></ion-icon>
@@ -55,6 +55,10 @@
 
             <ion-segment-button class="buttons" value="adm-groups">
               <ion-label>Groups</ion-label>
+            </ion-segment-button>
+
+            <ion-segment-button class="buttons" value="adm-blacklist">
+              <ion-label>Blacklist</ion-label>
             </ion-segment-button>
 
           </ng-container>
