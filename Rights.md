@@ -92,6 +92,20 @@
 
 ## documentsAdmin
 
+|                       | ****create**** | ****read**** | ****write**** | ****delete**** |
+|-----------------------|:--------------:|:------------:|:-------------:|:--------------:|
+| users                 |                |              |               |                |
+| users:roles           |                |              |               |                |
+| users:groups          |                |              |               |                |
+| profiles              |                |              |               |                |
+| authGroup:groupsArray |                |              |               |                |
+| authRole:rolesArray   |                |              |               |                |
+| blacklist             |                |              |               |                |
+| documents             | x              | x            | x             | x              |
+| documents:entry       |                | x            | x             | x              |
+| documents:owner       |                | x            | x             | x              |
+| documents:groups      |                | x            | x             | x              |
+
 
 ## moderator
 
