@@ -27,7 +27,7 @@
 | authGroup:groupsArray(entry) |                | x            |               |                |
 | authRole:rolesArray(entry)   |                | x            |               |                |
 | blacklist                    |                | x            |               |                |
-| documents                    |                | x            |               |                |
+| documents(in the same group) |                | x            |               |                |
 | documents:entry              |                | x            |               |                |
 | documents:owner              |                | x            |               |                |
 | documents:groups             |                | x            |               |                |
