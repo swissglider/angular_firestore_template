@@ -1,6 +1,39 @@
-## Roles
+# Roles
 
-### admin
+## simple user and his own data
+
+|                       | ****create**** | ****read**** | ****write**** | ****delete**** |
+|-----------------------|:--------------:|:------------:|:-------------:|:--------------:|
+| users                 | x              | x            |               |                |
+| users:roles           |                | x            |               |                |
+| users:groups          |                | x            |               |                |
+| profiles              | x              | x            |               |                |
+| authGroup:groupsArray |                | x            |               |                |
+| authRole:rolesArray   |                | x            |               |                |
+| blacklist             |                | x            |               |                |
+| documents             | x              | x            | x             | x              |
+| documents:entry       |                | x            | x             |                |
+| documents:owner       |                | x            |               |                |
+| documents:groups      |                | x            |               |                |
+
+## simple user and others users
+
+| ****                  | ****create**** | ****read**** | ****write**** | ****delete**** |
+|:---------------------:|:--------------:|:------------:|:-------------:|:--------------:|
+| users                 |                |              |               |                |
+| users:roles           |                |              |               |                |
+| users:groups          |                |              |               |                |
+| profiles              |                | x            |               |                |
+| authGroup:groupsArray |                | x            |               |                |
+| authRole:rolesArray   |                | x            |               |                |
+| blacklist             |                | x            |               |                |
+| documents             |                | x            |               |                |
+| documents:entry       |                | x            |               |                |
+| documents:owner       |                | x            |               |                |
+| documents:groups      |                | x            |               |                |
+
+## admin
+
 |                       | ****create**** | ****read**** | ****write**** | ****delete**** |
 |-----------------------|:--------------:|:------------:|:-------------:|:--------------:|
 | user                  | x              | x            | x             | x              |
@@ -15,9 +48,7 @@
 | documents:owner       |                | x            | x             |                |
 | documents:groups      |                | x            | x             |                |
 
-
-
-### authWriter
+## authWriter
 
 |                                      | **create** | **read** | **write** | **delete** |
 |--------------------------------------|:----------:|:--------:|:---------:|:----------:|
@@ -38,15 +69,31 @@
 | documents:owner                      |            | x        | x         |            |
 | documents:groups                     |            | x        | x         |            |
 
+## authReader
+
+|                                        | ****create**** | ****read**** | ****write**** | ****delete**** |
+|----------------------------------------|:--------------:|:------------:|:-------------:|:--------------:|
+| users                                  |                | x            |               |                |
+| users:roles                            |                | x            |               |                |
+| users:groups                           |                | x            |               |                |
+| ADMIN \- users                         |                | x            |               |                |
+| ADMIN \- users:roles                   |                | x            |               |                |
+| ADMIN \- users:groups                  |                | x            |               |                |
+| profiles                               |                | x            |               |                |
+| ADMIN \- profiles                      |                | x            |               |                |
+| authGroup:groupsArray                  |                | x            |               |                |
+| authRole:rolesArray                    |                | x            |               |                |
+| blacklist                              |                | x            |               |                |
+| blacklist \(add admin to Blacklist\\\) |                | x            |               |                |
+| documents                              |                | x            |               |                |
+| documents:entry                        |                | x            |               |                |
+| documents:owner                        |                | x            |               |                |
+| documents:groups                       |                | x            |               |                |
+
+## documentsAdmin
 
 
-### authReader
+## moderator
 
 
-### documentsAdmin
-
-
-### moderator
-
-
-### editor
+## editor
