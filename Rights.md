@@ -40,8 +40,8 @@
 | users:roles                  |                | x            | x             |                |
 | users:groups                 |                | x            | x             |                |
 | profiles                     | x              | x            | x             | x              |
-| authGroup:groupsArray(entry) | x              | x            | x             | x              |
-| authRole:rolesArray(entry)   | x              | x            | x             | x              |
+| authGroup:groupsArray(entry) |                | x            | x             |                |
+| authRole:rolesArray(entry)   |                | x            | x             |                |
 | blacklist                    |                | x            | x             |                |
 | documents                    | x              | x            | x             | x              |
 | documents:entry              |                | x            | x             |                |
@@ -60,8 +60,8 @@
 | ADMIN \- users:groups                |            | x        |           |            |
 | profiles                             | x          | x        | x         | x          |
 | ADMIN \- profiles                    |            | x        |           |            |
-| authGroup:groupsArray(entry)         |            | x        | x         | x          |
-| authRole:rolesArray(entry)           |            | x        | x         |            |
+| authGroup:groupsArray(entry)         | x          | x        | x         | x          |
+| authRole:rolesArray(entry)           | x          | x        | x         |            |
 | blacklist                            |            | x        | x         |            |
 | blacklist \(add admin to Blacklist\) |            | x        |           |            |
 | documents                            | x          | x        | x         | x          |
@@ -98,7 +98,7 @@
 | users:roles                  |                |              |               |                |
 | users:groups                 |                |              |               |                |
 | profiles                     |                |              |               |                |
-| authGroup:groupsArray(entry) |                | x            | x             | x              |
+| authGroup:groupsArray(entry) |                | x            | x             |                |
 | authRole:rolesArray(entry)   |                |              |               |                |
 | blacklist                    |                |              |               |                |
 | documents                    | x              | x            | x             | x              |
@@ -109,5 +109,33 @@
 
 ## moderator
 
+|                                | ****create**** | ****read**** | ****write**** | ****delete**** |
+|--------------------------------|:--------------:|:------------:|:-------------:|:--------------:|
+| users                          |                |              |               |                |
+| users:roles                    |                |              |               |                |
+| users:groups                   |                |              |               |                |
+| profiles                       |                |              |               |                |
+| authGroup:groupsArray\(entry\) |                | x            | x             |                |
+| authRole:rolesArray\(entry\)   |                |              |               |                |
+| blacklist                      |                |              |               |                |
+| documents                      | x              | x            | x             | x              |
+| documents:entry                |                | x            | x             |                |
+| documents:owner                |                | x            |               |                |
+| documents:groups               |                | x            | x             |                |
+
 
 ## editor
+
+|                                | ****create**** | ****read**** | ****write**** | ****delete**** |
+| ------------------------------ |:--------------:|:------------:|:-------------:|:--------------:|
+| users                          |                |              |               |                |
+| users:roles                    |                |              |               |                |
+| users:groups                   |                |              |               |                |
+| profiles                       |                |              |               |                |
+| authGroup:groupsArray\(entry\) |                |              |               |                |
+| authRole:rolesArray\(entry\)   |                |              |               |                |
+| blacklist                      |                |              |               |                |
+| documents                      | x              | x            | x             | x              |
+| documents:entry                |                | x            | x             |                |
+| documents:owner                |                | x            |               |                |
+| documents:groups               |                | x            |               |                |
