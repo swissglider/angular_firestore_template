@@ -84,7 +84,7 @@
 | authGroup:groupsArray                  |                | x            |               |                |
 | authRole:rolesArray                    |                | x            |               |                |
 | blacklist                              |                | x            |               |                |
-| blacklist \(add admin to Blacklist\\\) |                | x            |               |                |
+| blacklist \(add admin to Blacklist\)   |                | x            |               |                |
 | documents                              |                | x            |               |                |
 | documents:entry                        |                | x            |               |                |
 | documents:owner                        |                | x            |               |                |
