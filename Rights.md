@@ -5,7 +5,7 @@
 |-----------------------|------------------------------|---|---|
 |                       |                              |   |   |
 | user                  | x                            |   |   |
-| users:roles           | <font color='red'>bar</font> |   |   |
+| users:roles           | -! bar !- |   |   |
 | users:groups          |                              |   |   |
 | profiles              | x                            |   |   |
 | authGroup:groupsArray |                              |   |   |
