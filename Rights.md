@@ -5,7 +5,7 @@
 |-----------------------|-------------------------------------------------------|---|---|
 |                       |                                                       |   |   |
 | user                  | x                                                     |   |   |
-| users:roles           | ```html <div class="text\-blue mb\-2">bar</div> ``` |   |   |
+| users:roles           | <p style='color:red'>This is some red text.</p> |   |   |
 | users:groups          |                                                       |   |   |
 | profiles              | x                                                     |   |   |
 | authGroup:groupsArray |                                                       |   |   |
